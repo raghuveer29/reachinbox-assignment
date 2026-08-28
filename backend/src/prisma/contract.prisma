@@ -1,0 +1,27 @@
+model User {
+  id        Int      @id @default(autoincrement())
+  googleId  String   @unique
+  email     String   @unique
+  name      String?
+  avatar    String?
+  emails    Email[]
+  createdAt TimestamptzString @default(now())
+  updatedAt temporal.updatedAtString()
+}
+
+model Email {
+  id             Int      @id @default(autoincrement())
+  recipientEmail String
+  senderEmail    String
+  subject        String
+  body           String
+  scheduledAt    TimestamptzString
+  sentAt         TimestamptzString?
+  status         String
+  jobId          String   @unique
+  errorMessage   String?
+  user           User     @relation(fields: [userId], references: [id])
+  userId         Int
+  createdAt      TimestamptzString @default(now())
+  updatedAt      temporal.updatedAtString()
+}
