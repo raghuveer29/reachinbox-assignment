@@ -52,9 +52,7 @@ function App() {
   // -----------------------------
 
   const [to, setTo] = useState("");
-  const [senderEmail, setSenderEmail] = useState(
-    "brice59@ethereal.email",
-  );
+  const [senderEmail] = useState("brice59@ethereal.email");
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState("");
 
