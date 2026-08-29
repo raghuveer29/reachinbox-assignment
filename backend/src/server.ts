@@ -14,10 +14,17 @@ import { Queue } from "bullmq";
 import session from "express-session";
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  }),
+);
 app.use(
   session({
     secret: process.env.SESSION_SECRET || "reachinbox-secret",
